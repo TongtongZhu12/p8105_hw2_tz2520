@@ -30,3 +30,59 @@ trans_ent =
     ada) %>% 
   mutate(entry = ifelse(entry == "YES", TRUE, FALSE))
 ```
+
+**Description of dataset**
+
+The dataset `trans_ent` contains `r ncol(trans_ent)` columns and `r nrow(trans_ent)` rows. The variables include `line`, `station_name`, `station_latitude`, `station_longitude`, route (1-11), `entry`, `exit_only`, `vending`, `entrance_type`, `ada`. Data cleaning steps begin with data read, clean variable names, change the type of variable of Route columns (8-11) to character, arrange the sequence of columns, change the type of `entry` variable to logical. 
+
+These data are not "tidy", because route number should be a variable. 
+
+### Calculate the number of distinc stations
+
+**Number of distinct stations**
+
+```{r}
+trans_ent %>% 
+  select(station_name, line) %>% 
+  distinct
+```
+
+**Number of distinct stations with ADA compliant**
+
+```{r}
+trans_ent %>% 
+  filter(ada == TRUE) %>% 
+  select(station_name, line) %>% 
+  distinct
+```
+
+**Proportion of station entrances / exits**
+
+```{r}
+trans_ent %>% 
+  filter(vending == "NO") %>% 
+  pull(entry) %>% 
+  mean
+```
+
+**Number of distinct stations serve A train, with ADA compliant**
+
+```{r}
+trans_ent %>% 
+  pivot_longer(
+    route1:route11,
+    names_to = "route_num",
+    values_to = "route") %>% 
+  filter(route == "A") %>% 
+  select(station_name, line) %>% 
+  distinct
+
+trans_ent %>% 
+  pivot_longer(
+    route1:route11,
+    names_to = "route_num",
+    values_to = "route") %>% 
+  filter(route == "A", ada == TRUE) %>% 
+  select(station_name, line) %>% 
+  distinct
+```
