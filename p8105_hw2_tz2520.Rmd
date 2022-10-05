@@ -130,6 +130,14 @@ pro_trash_wheel =
   relocate(sports_balls, .before = homes_powered)
 ```
 
+### Add variable to both datasets and combine them
+
+```{r}
+mr_trash_wheel_new = mutate(mr_trash_wheel, wheel_type = "mr")
+pro_trash_wheel_new = mutate(pro_trash_wheel, wheel_type = "pro")
+com_data = bind_rows(mr_trash_wheel_new, pro_trash_wheel_new)
+
+```
 
 
 
