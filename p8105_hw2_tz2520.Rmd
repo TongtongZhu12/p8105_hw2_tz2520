@@ -139,7 +139,25 @@ com_data = bind_rows(mr_trash_wheel_new, pro_trash_wheel_new)
 
 ```
 
+### Calcualte the total weight of trash & total number of sports balls
 
+```{r}
+sum(pro_trash_wheel$weight_tons)
+```
+
+
+```{r}
+sum(mr_trash_wheel$sports_balls[which(mr_trash_wheel$year == "2020")])
+```
+
+
+**Description of new combining dataset**
+
+The new dataset `com_data` contains `r nrow(com_data)` observations of `r ncol(com_data)` variables. The key variables include `dumpsters`, `year`, `weight_tons`, `volume_cubic_yards`, `plastic_bottles`, `polystyrene`, `cigarette_butts`, `glass_bottles`, `grocery_bags`, `chip-bags`, `sports_balls`, `homes_powered` and `wheel_type`. 
+
+Compared with the original separate datasets `mr_trash_wheel` and `pro_trash_wheel`, the new combining dataset include a new column `wheel_type` to track the data from which trash wheel. `mr_trash_wheel` is identified as `wheel_type` "mr", and `pro_trash_wheel` is identified as `wheel_type` "pro". 
+
+The total weight of trash collected by Professor Trash Wheel is `r sum(pro_trash_wheel$weight_tons)` tons. The total number of sports balls collected by Mr. Trash Wheel in 2020 is `r sum(mr_trash_wheel$sports_balls[which(mr_trash_wheel$year == "2020")])`.
 
 
 
