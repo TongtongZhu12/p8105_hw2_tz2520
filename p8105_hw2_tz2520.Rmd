@@ -86,3 +86,38 @@ trans_ent %>%
   select(station_name, line) %>% 
   distinct
 ```
+
+**Summary**
+
+There are total 465 distinct stations. 
+There are 84 distinct stations with ADA compliant.
+37.7% of station entrances/exits without vending allows entrance.
+There are 60 distinct stations serve the A train. Of the stations that serve the A train, 17 are ADA compliant.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
