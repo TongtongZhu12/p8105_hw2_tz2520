@@ -95,6 +95,41 @@ There are 84 distinct stations with ADA compliant.
 There are 60 distinct stations serve the A train. Of the stations that serve the A train, 17 are ADA compliant.
 
 
+## Problem 2
+
+### Read and clean Mr. Trash Wheel sheet
+
+```{r}
+mr_trash_wheel = 
+  read_excel(
+    "./data/Trash Wheel Collection Data.xlsx",
+    sheet = 1,
+    range = "A2:N550",
+    skip = 1, 
+    col_names = TRUE) %>% 
+  janitor::clean_names() %>% 
+  drop_na(dumpster) %>% 
+  mutate(sports_balls = as.integer(round(sports_balls, digits = 0)))
+```
+
+### Read and clean Professor Trash Wheel sheet
+
+```{r}
+pro_trash_wheel = 
+  read_excel(
+    "./data/Trash Wheel Collection Data.xlsx",
+    sheet = 2,
+    range = "A2:M97",
+    skip = 1, 
+    col_names = TRUE) %>% 
+  janitor::clean_names() %>% 
+  drop_na(dumpster) %>% 
+  mutate(
+    sports_balls = NA,
+    year = as.character(year)) %>% 
+  relocate(sports_balls, .before = homes_powered)
+```
+
 
 
 
