@@ -1,0 +1,16 @@
+---
+title: "Homework 2"
+author: "Tongtong Zhu"
+date: "2022-10-04"
+output: github_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, message = FALSE, warning = FALSE)
+```
+
+```{r load_libraries, include=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
