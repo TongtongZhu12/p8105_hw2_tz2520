@@ -161,6 +161,24 @@ The total weight of trash collected by Professor Trash Wheel is `r sum(pro_trash
 
 
 
+## Problem 3
+
+### Read and clean data in pols-month file
+
+```{r}
+pols_month = 
+  read_csv("./data/fivethirtyeight_datasets/pols-month.csv") %>% 
+  janitor::clean_names() %>%
+  separate(mon, into = c("year", "month", "day"), sep = "-" ) %>% 
+  mutate(
+         president = if_else(prez_gop == 1, "gop", "dem"),
+         year = as.integer(year)) %>% 
+  arrange(year, month) %>% 
+  mutate(month = month.name[as.integer(month)]) %>% 
+  select(-prez_dem, -prez_gop, -day)
+
+```
+
 
 
 
