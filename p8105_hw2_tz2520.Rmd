@@ -216,6 +216,15 @@ pols_snp = left_join(pols_month, snp, by = c("year","month"))
 pols_snp_unemployment = left_join(pols_snp, unemployment, by = c("year","month"))
 ```
 
+**Summary**
+
+The `pols_month` dataset  contains `r nrow(pols_month)` observations of `r ncol(pols_month)` variables. The range of years in this dataset is (`r range(pols_month$year)`). The key variables include `gov_gop`,`gov_dem`, `president` and so on.
+
+The `snp` dataset contains `r nrow(snp)` observations of `r ncol(snp)` variables. The range of years in this dataset is (`r range(snp$year)`). The key variables include `year`, `month` and `close`.
+
+The `unemployment` dataset contains `r nrow(unemployment)` observations of `r ncol(unemployment)` variables. The range of years in this dataset is (`r range(unemployment$year)`). The key variables include `year`, `month` and `umemployment_percent`.
+
+In total, the combined `pols_snp_unemployment` dataset contains `r nrow(pols_snp_unemployment)` observations of `r ncol(pols_snp_unemployment)` variables. The range of years in this combined dataset is (`r range(pols_snp_unemployment$year)`). The key variables include all the variables that included in the above three datasets.
 
 
 
