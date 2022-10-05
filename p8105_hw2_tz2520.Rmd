@@ -209,6 +209,12 @@ unemployment = read_csv("./data/fivethirtyeight_datasets/unemployment.csv") %>%
 
 ```
 
+### Join the datasets of snp and pols, and then merge unemployment
+
+```{r}
+pols_snp = left_join(pols_month, snp, by = c("year","month"))
+pols_snp_unemployment = left_join(pols_snp, unemployment, by = c("year","month"))
+```
 
 
 
